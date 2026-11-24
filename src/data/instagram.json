@@ -1,0 +1,43 @@
+{
+  "fonte": "instagram-kiraht",
+  "video": {
+    "src": "/instagram/video-enceramento-janela.mp4",
+    "poster": "/instagram/video-enceramento-janela-poster.jpg",
+    "data": "2026-11-20T11:27:47",
+    "arquivo": "Video enceramento janela.MP4"
+  },
+  "posts": [
+    {
+      "src": "/instagram/foto-1.jpg",
+      "largura": 1193,
+      "altura": 1436,
+      "data": "2026-11-20T11:32:52",
+      "origemData": "exif",
+      "arquivo": "Foto 1.jpg"
+    },
+    {
+      "src": "/instagram/foto-2.jpg",
+      "largura": 1193,
+      "altura": 1482,
+      "data": "2026-11-20T11:33:09",
+      "origemData": "exif",
+      "arquivo": "Foto 2.jpg"
+    },
+    {
+      "src": "/instagram/foto-3.jpg",
+      "largura": 1192,
+      "altura": 1471,
+      "data": "2026-11-20T11:33:27",
+      "origemData": "exif",
+      "arquivo": "Foto 3.jpg"
+    },
+    {
+      "src": "/instagram/foto-4.jpg",
+      "largura": 1203,
+      "altura": 1170,
+      "data": "2026-11-20T11:33:45",
+      "origemData": "exif",
+      "arquivo": "Foto 4.jpg"
+    }
+  ]
+}

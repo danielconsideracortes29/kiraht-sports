@@ -1,0 +1,282 @@
+---
+import Base from "../layouts/Base.astro";
+import { D, athletes, team, countryName, initials } from "../lib/kiraht";
+import { ui, paths, tr, type Lang } from "../lib/i18n";
+import instagram from "../data/instagram.json";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const players = athletes.filter((a) => a.kind === "player");
+const coaches = athletes.filter((a) => a.kind === "coach");
+const clubs = new Set(athletes.map((a) => a.club));
+const countries = new Set(athletes.map((a) => a.country));
+
+/* Instagram: vídeo em destaque + fotos fornecidas (scripts/importar_instagram.py) */
+const ig = instagram as { video: { src: string; poster: string | null; data: string } | null; posts: { src: string; largura: number; altura: number; data: string }[] };
+const posts = ig.posts;
+/* Imagens da Kiraht no topo: três publicações fornecidas, inteiras, em camadas de profundidade */
+const heroImgs = [posts[0], posts[3] ?? posts[1], posts[1] ?? posts[0]].filter(Boolean);
+---
+<Base title={t.homeTitle} lang={lang} alternates={{ pt: paths.home("pt"), en: paths.home("en"), ar: paths.home("ar") }}>
+  <section class="hero">
+    <div class="hero-bg" data-hero-bg aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <div class="hero-txt" data-hero-txt>
+        <p class="eyebrow hero-eyebrow" data-reveal>Kiraht Sports &amp; Support</p>
+        <h1 data-reveal>{t.heroTitle}</h1>
+        <p class="lead" data-reveal>{t.heroLead}</p>
+        <a class="btn btn-claro" href="#elenco" data-reveal>{t.heroCta} <span aria-hidden="true">{t.arrow}</span></a>
+      </div>
+      <div class="colagem" aria-hidden="true">
+        {heroImgs.map((p, i) => (
+          <figure class={`camada camada-${i + 1}`} data-depth={[0.35, 0.8, 0.55][i]} style={`--ar:${p.largura}/${p.altura}`}>
+            <img src={p.src} width={p.largura} height={p.altura} alt="" loading={i === 0 ? "eager" : "lazy"} />
+          </figure>
+        ))}
+      </div>
+    </div>
+    <div class="wrap">
+      <dl class="numeros" data-reveal>
+        <div><dd>{players.length}</dd><dt>{t.stats.players}</dt></div>
+        <div><dd>{coaches.length}</dd><dt>{t.stats.coaches}</dt></div>
+        <div><dd>{clubs.size}</dd><dt>{t.stats.clubs}</dt></div>
+        <div><dd>{countries.size}</dd><dt>{t.stats.countries}</dt></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="secao" id="elenco">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>{t.rosterEyebrow}</p>
+      <h2 data-reveal>{t.athletesTitle}</h2>
+      <p class="nota" data-reveal>{t.rosterLead}</p>
+      <ul class="elenco">
+        {athletes.map((a) => (
+          <li data-depth-item>
+            <a href={paths.athlete(lang, a.slug)} class="card" data-tilt data-club={a.club} data-country={a.country}>
+              <span class="card-foto">
+                {a.face
+                  ? <img src={a.face} alt={t.faceAlt(a.name)} loading="lazy" />
+                  : <span class="avatar card-ini" aria-hidden="true">{initials(a.name)}</span>}
+                {a.kind === "coach" && <span class="card-tag">{t.coach}</span>}
+              </span>
+              <span class="card-txt">
+                <strong>{a.name}</strong>
+                <span>{a.club}</span>
+                <span class="card-pais">{countryName(a.country, lang)}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="secao equipe" id="equipe">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>{t.teamEyebrow}</p>
+      <h2 data-reveal>{t.teamTitle}</h2>
+      <div class="equipe-grid">
+        {team.map((m) => (
+          <div class="membro-camada" data-depth-item>
+          <article class="membro" data-tilt>
+            {m.photo
+              ? <img class="membro-foto" src={m.photo} alt={t.faceAlt(m.name)} loading="lazy" />
+              : <div class="membro-foto avatar" aria-hidden="true">{initials(m.name)}</div>}
+            <p class="membro-tag">{t.teamMember}</p>
+            <h3>{m.name}</h3>
+            {m.role && <p class="cargo">{tr(m.role, lang)}</p>}
+            {m.instagram && (
+              <a class="ig" href={`https://www.instagram.com/${m.instagram}/`} target="_blank" rel="noopener">
+                <svg class="ig-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg>
+                <bdi dir="ltr">@{m.instagram}</bdi>
+              </a>
+            )}
+          </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="instagram">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>{t.igEyebrow}</p>
+      <h2 data-reveal>{t.ig.title}</h2>
+      <p class="nota" data-reveal>{t.ig.lead}</p>
+
+      {ig.video && (
+        <figure class="ig-video" data-video data-reveal>
+          <div class="video-frame">
+            <video controls playsinline preload="metadata" poster={ig.video.poster ?? undefined} aria-label={t.ig.videoTitle}>
+              <source src={ig.video.src} type="video/mp4" />
+            </video>
+            <button type="button" class="video-play" data-video-play aria-label={t.ig.play}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg>
+            </button>
+          </div>
+          <figcaption class="video-legenda">
+            <h3>{t.ig.videoTitle}</h3>
+            <button type="button" class="btn btn-linha btn-mini" data-video-fs>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" /></svg>
+              {t.ig.fullscreen}
+            </button>
+          </figcaption>
+        </figure>
+      )}
+
+      {posts.length > 0 && (
+        <div class="recentes">
+          <h3 class="recentes-titulo" data-reveal>{t.ig.recent}</h3>
+          <div class="carrossel" data-carrossel data-intervalo="5000" role="region" aria-roledescription={t.ig.roledesc} aria-label={t.ig.carousel} tabindex="0" data-reveal
+               data-label-pause={t.ig.pause} data-label-resume={t.ig.resume} data-slide-fmt={t.ig.slide(999, posts.length)}>
+            <div class="car-palco" data-car-palco>
+              {posts.map((p, i) => (
+                <figure class:list={["car-slide", { ativo: i === 0 }]} data-car-slide aria-label={t.ig.slide(i + 1, posts.length)} aria-hidden={i === 0 ? "false" : "true"}>
+                  <img src={p.src} width={p.largura} height={p.altura} alt={t.ig.alt(i + 1, posts.length)} loading={i === 0 ? "eager" : "lazy"} draggable="false" />
+                </figure>
+              ))}
+            </div>
+            <div class="car-info">
+              <span class="car-contagem" data-car-contagem aria-live="polite">{t.ig.slide(1, posts.length)}</span>
+              {/* Datas ocultas até serem verificadas (os arquivos só têm a data em que foram salvos). */}
+            </div>
+            <div class="car-ctrl">
+              <button type="button" class="car-btn" data-car-prev aria-label={t.ig.prev} data-seta><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg></button>
+              <div class="car-dots" role="group" aria-label={t.ig.recent}>
+                {posts.map((_, i) => <button type="button" class:list={["car-dot", { ativo: i === 0 }]} data-car-dot={i} aria-label={t.ig.goTo(i + 1)} aria-current={i === 0 ? "true" : undefined}></button>)}
+              </div>
+              <button type="button" class="car-btn car-pausa" data-car-pausa aria-pressed="false" aria-label={t.ig.pause}>
+                <svg class="ico-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg>
+                <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg>
+              </button>
+              <button type="button" class="car-btn" data-car-next aria-label={t.ig.next} data-seta><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div class="ig-cta" data-reveal>
+        <a class="btn btn-escuro" href="https://www.instagram.com/kirahtsports/" target="_blank" rel="noopener">
+          <svg class="ig-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg>
+          {t.ig.cta} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { initCarrossel } from "../scripts/carrossel";
+  import { initVideo } from "../scripts/video";
+  document.querySelectorAll<HTMLElement>("[data-carrossel]").forEach(initCarrossel);
+  document.querySelectorAll<HTMLElement>("[data-video]").forEach(initVideo);
+</script>
+
+<style>
+  .hero { position: relative; color: #fff; overflow: hidden; background: var(--navy-deep); }
+  .hero-bg { position: absolute; inset: 0; background: #1A3CA6 url("/img/hero-estadio.jpg") center 62% / cover no-repeat; background-blend-mode: luminosity; }
+  .hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,11,58,.5) 0%, rgba(11,20,102,.55) 50%, rgba(6,11,58,.97) 100%); }
+  .hero-in { position: relative; padding: clamp(80px, 12vw, 150px) 0 0; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 1fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+  .hero-eyebrow { color: var(--sky); }
+  .hero h1 { font-size: clamp(2.7rem, 7.4vw, 6.4rem); max-width: 14ch; text-wrap: balance; letter-spacing: .005em; }
+  .lead { font-size: clamp(1rem, 1.6vw, 1.2rem); max-width: 46ch; color: rgba(255,255,255,.85); margin: 24px 0 32px; }
+  .numeros { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: clamp(48px, 8vw, 88px) 0 0; padding: 24px 0 44px; border-top: 1px solid rgba(255,255,255,.18); }
+  .numeros dd { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; }
+  .numeros dt { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--sky); margin-top: 6px; }
+  @media (max-width: 520px) { .numeros { grid-template-columns: repeat(2, 1fr); row-gap: 24px; } }
+
+  /* Colagem em camadas (imagens inteiras, proporção original) */
+  .colagem { position: relative; height: clamp(420px, 46vw, 600px); perspective: 1200px; transform-style: preserve-3d; }
+  .camada { position: absolute; margin: 0; aspect-ratio: var(--ar); border-radius: 16px; overflow: hidden; background: var(--navy-deep); box-shadow: 0 30px 60px -22px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); will-change: transform; }
+  .camada img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .camada-1 { width: 58%; left: 2%; top: 10%; z-index: 2; transform: rotate(-4deg); }
+  .camada-2 { width: 50%; right: 0; top: 0; z-index: 3; transform: rotate(5deg); }
+  .camada-3 { width: 44%; right: 14%; bottom: 0; z-index: 1; transform: rotate(-1deg); opacity: .92; }
+  @media (max-width: 760px) {
+    .hero-in { grid-template-columns: 1fr; padding-top: 56px; gap: 36px; }
+    .colagem { height: 340px; max-width: 420px; width: 100%; justify-self: center; }
+  }
+
+  #elenco .nota, #instagram > .wrap > .nota { margin-bottom: 36px; }
+  .elenco { list-style: none; padding: 0; margin: 0; perspective: 1100px; display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 18px; }
+  @media (max-width: 420px) { .elenco { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+  .card { display: flex; flex-direction: column; height: 100%; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; }
+  .card-foto { position: relative; display: block; aspect-ratio: 139 / 181; background: linear-gradient(180deg, #E9EBF3, #DADFEC); overflow: hidden; }
+  .card-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .card:hover .card-foto img { transform: scale(1.03); }
+  .card-ini { position: absolute; inset: 0; font-size: 2.6rem; background: linear-gradient(180deg, #E9EBF3, #D6DCEB); color: rgba(11,20,102,.45); }
+  .card-tag { position: absolute; inset-inline-start: 10px; top: 10px; background: var(--navy); color: #fff; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; padding: 4px 9px; border-radius: 999px; }
+  .card-txt { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px 14px; line-height: 1.3; }
+  .card-txt strong { color: var(--navy); font-family: var(--display); font-size: 1.3rem; text-transform: uppercase; letter-spacing: .01em; line-height: 1.05; }
+  .card-txt span { color: var(--ink); font-size: .85rem; }
+  .card-txt .card-pais { color: var(--muted); font-size: .78rem; }
+
+  .equipe { background: var(--navy); color: #fff; }
+  .equipe h2 { color: #fff; }
+  .equipe .eyebrow { color: var(--sky); }
+  .equipe-grid { margin-top: 40px; perspective: 1200px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .membro-camada { height: 100%; }
+  .membro { height: 100%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 28px; }
+  .membro-foto { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; font-size: 2.2rem; background: linear-gradient(150deg, var(--royal), var(--sky)); margin-bottom: 18px; border: 2px solid rgba(34,166,242,.5); }
+  .membro-tag { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--sky); font-weight: 600; margin-bottom: 6px; }
+  .membro h3 { font-size: 1.7rem; }
+  .cargo { color: rgba(255,255,255,.78); font-size: .9rem; margin: 6px 0 0; }
+  .ig { display: inline-flex; gap: 8px; align-items: center; color: var(--sky); text-decoration: none; font-weight: 500; font-size: .92rem; margin-top: 16px; word-break: break-all; }
+  .ig:hover { color: #fff; }
+  .nota { color: var(--muted); max-width: 52ch; margin-top: 16px; }
+
+  /* Instagram: vídeo */
+  .ig-video { margin: 0 auto; max-width: 420px; }
+  .video-frame { position: relative; border-radius: 18px; overflow: hidden; background: var(--navy-deep); box-shadow: 0 30px 60px -20px rgba(11,20,102,.35); aspect-ratio: 9 / 16; }
+  .video-frame video { display: block; width: 100%; height: 100%; object-fit: contain; background: var(--navy-deep); }
+  .video-play { position: absolute; inset: 0; margin: auto; width: 76px; height: 76px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center; color: var(--navy); background: rgba(255,255,255,.92); box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 -3px 0 rgba(11,20,102,.12); transition: transform .2s, background .2s; }
+  .video-play svg { width: 30px; height: 30px; fill: currentColor; margin-left: 4px; }
+  .video-play:hover { transform: scale(1.06); background: #fff; }
+  .video-play:active { transform: scale(.96); }
+  .ig-video.tocando .video-play { opacity: 0; pointer-events: none; }
+  .video-legenda { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-top: 16px; }
+  .video-legenda h3 { font-size: 1.6rem; color: var(--navy); }
+  .btn-mini { padding: 9px 16px; font-size: .85rem; }
+  .btn-mini svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  /* Instagram: carrossel */
+  .recentes { margin-top: clamp(56px, 8vw, 88px); }
+  .recentes-titulo { font-size: clamp(1.6rem, 3.4vw, 2.2rem); color: var(--navy); margin-bottom: 20px; }
+  .carrossel { max-width: 720px; margin: 0 auto; outline: none; }
+  .carrossel:focus-visible .car-palco { box-shadow: 0 0 0 3px var(--sky); }
+  .car-palco { position: relative; height: clamp(360px, 72vh, 720px); border-radius: 18px; overflow: hidden; background: radial-gradient(120% 90% at 50% 40%, var(--navy) 0%, var(--navy-deep) 75%); touch-action: pan-y; user-select: none; }
+  .car-slide { position: absolute; inset: 0; margin: 0; padding: clamp(10px, 2vw, 20px); opacity: 0; transition: opacity .9s ease; display: flex; align-items: center; justify-content: center; }
+  .car-slide.ativo { opacity: 1; }
+  .car-slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .car-info { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 14px; font-size: .85rem; color: var(--muted); }
+  .car-contagem { font-weight: 600; color: var(--navy); letter-spacing: .04em; }
+  .car-ctrl { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; }
+  .car-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); color: var(--navy); display: grid; place-items: center; cursor: pointer; box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 6px 14px -6px rgba(11,20,102,.35); transition: transform .15s, box-shadow .2s, background .2s; }
+  .car-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .car-btn:hover { background: #fff; border-color: var(--sky); }
+  .car-btn:active { transform: translateY(1px) scale(.96); box-shadow: 0 2px 6px -3px rgba(11,20,102,.4); }
+  .car-pausa .ico-play { display: none; fill: currentColor; stroke: none; }
+  .car-pausa[aria-pressed="true"] .ico-play { display: block; }
+  .car-pausa[aria-pressed="true"] .ico-pausa { display: none; }
+  .car-dots { display: flex; gap: 8px; padding: 0 6px; }
+  .car-dot { width: 10px; height: 10px; padding: 0; border-radius: 999px; border: 0; background: rgba(11,20,102,.22); cursor: pointer; transition: width .3s, background .3s; }
+  .car-dot.ativo { width: 26px; background: var(--royal); }
+  @media (pointer: coarse) { .car-dot { width: 12px; height: 12px; } .car-dot.ativo { width: 28px; } }
+  @media (max-width: 520px) { .car-palco { height: min(118vw, 70vh); } .car-ctrl { gap: 8px; } }
+
+  .ig-cta { display: flex; justify-content: center; margin-top: clamp(40px, 6vw, 64px); }
+  .ig-cta .ig-ico { width: 18px; height: 18px; }
+
+  /* RTL: setas do carrossel apontam no sentido da leitura */
+  :global([dir="rtl"]) [data-seta] svg { transform: scaleX(-1); }
+  :global([dir="rtl"]) .camada-1 { transform: rotate(4deg); }
+  :global([dir="rtl"]) .camada-2 { transform: rotate(-5deg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .car-slide { transition: none; }
+    .card-foto img { transition: none; }
+  }
+</style>

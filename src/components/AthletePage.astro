@@ -1,0 +1,162 @@
+---
+/*
+ * Ficha reutilizável: foto em ação inteira no topo (sem cortes nem distorção) e informações abaixo.
+ * Só aparecem campos com informação confirmada; campos vazios ficam ocultos.
+ */
+import Base from "../layouts/Base.astro";
+import { countryName, athleteView, type Athlete } from "../lib/kiraht";
+import { ui, paths, type Lang } from "../lib/i18n";
+
+interface Props { a: Athlete; lang: Lang }
+const { a, lang } = Astro.props;
+const t = ui[lang];
+const v = athleteView(a, lang);
+const isCoach = a.kind === "coach";
+const back = `${paths.home(lang)}#elenco`;
+
+const facts = ([
+  [t.facts.sportName, v.sportName],
+  [t.facts.fullName, v.fullName],
+  isCoach ? [t.facts.role, v.role] : [t.facts.position, v.position],
+  [t.facts.secondary, v.secondary],
+  [t.facts.born, v.born],
+  [t.facts.nationality, v.nationality],
+  [t.facts.height, v.height],
+  [t.facts.foot, v.foot],
+  [t.facts.license, v.license],
+  [t.facts.club, v.clubLine],
+  [t.facts.clubSince, v.clubSince],
+  [t.facts.loanFrom, v.loanFrom],
+  [t.facts.competition, a.competition],
+  [t.facts.country, countryName(a.country, lang)],
+  [t.facts.contract, v.contract],
+] as [string, string | undefined | null][]).filter(([, x]) => x) as [string, string][];
+---
+<Base
+  title={`${a.name} — Kiraht Sports`}
+  description={t.profileDescription(a.name, a.club)}
+  lang={lang}
+  alternates={{ pt: paths.athlete("pt", a.slug), en: paths.athlete("en", a.slug), ar: paths.athlete("ar", a.slug) }}
+>
+  {a.action && (
+    <section class="capa">
+      <a class="voltar voltar-capa" href={back}>{t.back}</a>
+      <img class="capa-foto" src={a.action} alt={t.actionAlt(a.name)} />
+    </section>
+  )}
+
+  <section class:list={["cab", { "cab-sem-capa": !a.action }]}>
+    <div class="wrap">
+      {!a.action && <a class="voltar" href={back}>{t.back}</a>}
+      <div class="cab-in">
+        {a.face && <img class="rosto" src={a.face} alt={t.faceAlt(a.name)} />}
+        <div class="cab-txt">
+          <p class="eyebrow">{isCoach ? t.coach : t.player} · {t.season}</p>
+          <h1>{a.name}</h1>
+          <p class="clube-atual">{a.club}{a.competition ? ` · ${a.competition}` : ""}</p>
+          {a.instagram && (
+            <a class="ig" href={`https://www.instagram.com/${a.instagram}/`} target="_blank" rel="noopener">
+              <svg class="ig-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg>
+              <bdi dir="ltr">@{a.instagram}</bdi>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao corpo">
+    <div class="wrap">
+      <dl class="fatos">
+        {facts.map(([k, x]) => <div><dt>{k}</dt><dd>{x}</dd></div>)}
+      </dl>
+
+      {v.source && (
+        <div class="tm-acao">
+          <a class="btn btn-escuro btn-tm" href={v.source.url} target="_blank" rel="noopener" data-tm>
+            {t.tmButton}
+            <span class="sr-only">{t.newTab}</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" /></svg>
+          </a>
+        </div>
+      )}
+
+      {v.bio && <p class="bio">{v.bio}</p>}
+
+      {v.career.length > 0 && (
+        <div class="bloco">
+          <h2>{isCoach ? t.careerCoach : t.career}</h2>
+          <ol class="linha">
+            {v.career.map((c) => (
+              <li class:list={{ atual: c.current }}>
+                <span class="periodo"><bdi dir="ltr">{c.period}</bdi></span>
+                <span class="clube-linha">
+                  <strong>{c.club}</strong>
+                  {c.note && <span class="obs">{c.note}</span>}
+                  {c.since && <span class="obs">{t.facts.sinceShort} {c.since}</span>}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {v.source && (
+        <p class="fonte"><a href={v.source.url} target="_blank" rel="noopener">{t.source(v.source.date)} ↗</a></p>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Capa: foto em ação inteira; o espaço que sobra recebe o azul do site */
+  .capa { position: relative; background: radial-gradient(120% 90% at 50% 40%, var(--navy) 0%, var(--navy-deep) 70%); display: flex; justify-content: center; align-items: center; height: clamp(380px, 76vh, 820px); padding: 56px clamp(16px, 4vw, 48px) 28px; }
+  .capa-foto { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+  .voltar { color: var(--sky); text-decoration: none; font-size: .88rem; font-weight: 500; display: inline-block; margin-bottom: 20px; }
+  .voltar-capa { position: absolute; z-index: 2; top: 14px; inset-inline-start: max(16px, calc((100% - 1180px) / 2)); margin: 0; color: #fff; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); padding: 7px 14px; border-radius: 999px; }
+  .voltar-capa:hover { background: var(--royal); }
+  @media (max-width: 640px) {
+    .capa { height: auto; padding: 52px 0 0; }
+    .capa-foto { height: auto; max-height: 82vh; }
+  }
+
+  .cab { background: var(--navy); color: #fff; padding: 32px 0 44px; }
+  .cab-sem-capa { padding-top: 28px; }
+  .cab-in { display: flex; gap: clamp(18px, 4vw, 32px); align-items: flex-end; }
+  .rosto { width: clamp(84px, 12vw, 128px); aspect-ratio: 139 / 181; object-fit: cover; object-position: 50% 20%; border-radius: 12px; border: 2px solid rgba(34,166,242,.6); background: #DADFEC; flex: none; }
+  .cab-txt { min-width: 0; }
+  .cab .eyebrow { color: var(--sky); margin-bottom: 12px; }
+  .cab h1 { font-size: clamp(2.6rem, 8vw, 5.8rem); overflow-wrap: anywhere; }
+  .clube-atual { font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,.85); margin: 12px 0 0; }
+  .ig { display: inline-flex; gap: 8px; align-items: center; margin-top: 14px; color: var(--sky); text-decoration: none; font-weight: 500; font-size: .95rem; word-break: break-all; }
+  .ig:hover { color: #fff; }
+  @media (max-width: 480px) { .cab-in { align-items: flex-start; } .cab .eyebrow { font-size: .68rem; letter-spacing: .16em; } }
+
+  .corpo { padding-top: 44px; }
+  .fatos { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 0; }
+  .fatos div { padding: 16px 18px; box-shadow: 1px 0 0 var(--line), 0 1px 0 var(--line); }
+  .fatos dt { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--royal); font-weight: 600; }
+  .fatos dd { margin: 4px 0 0; color: var(--ink); font-weight: 500; overflow-wrap: anywhere; }
+  @media (max-width: 420px) { .fatos { grid-template-columns: 1fr 1fr; } .fatos div { padding: 14px; } }
+  .bio { max-width: 70ch; font-size: 1.05rem; margin-top: 40px; }
+  .bloco { margin-top: 56px; }
+  .bloco h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--navy); margin-bottom: 24px; }
+
+  .linha { list-style: none; margin: 0; padding: 0; padding-inline-start: 22px; border-inline-start: 2px solid var(--line); }
+  .linha li { position: relative; padding: 0 0 18px; padding-inline-start: 8px; display: grid; grid-template-columns: 96px 1fr; gap: 4px 14px; align-items: baseline; }
+  .linha li::before { content: ""; position: absolute; inset-inline-start: -29px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--ivory); border: 2px solid var(--royal); }
+  .linha li.atual::before { background: var(--sky); border-color: var(--sky); box-shadow: 0 0 0 5px rgba(34,166,242,.2); }
+  .periodo { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--royal); white-space: nowrap; }
+  .clube-linha { display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; }
+  .linha strong { color: var(--navy); font-size: 1.02rem; }
+  .obs { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+  @media (max-width: 420px) { .linha li { grid-template-columns: 92px 1fr; } .periodo { font-size: 1rem; } }
+
+  .fonte { margin-top: 48px; font-size: .85rem; }
+  .tm-acao { margin-top: 22px; }
+  .btn-tm svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  :global([dir="rtl"]) .btn-tm svg { transform: scaleX(-1); }
+  @media (max-width: 480px) { .btn-tm { width: 100%; justify-content: center; text-align: center; } }
+  .fonte a { color: var(--muted); }
+  .fonte a:hover { color: var(--royal); }
+</style>

@@ -1,0 +1,24 @@
+{
+  "_nota": "Rodapé: somente o escritório de Dubai, informado pela agência em 24/11/2026. Edifício e sala ficam em aberto até confirmação. Os endereços cadastrais brasileiros foram retirados.",
+  "escritorios": [
+    {
+      "cidade": { "pt": "Dubai", "en": "Dubai", "ar": "دبي" },
+      "pais": { "pt": "Emirados Árabes Unidos", "en": "United Arab Emirates", "ar": "الإمارات العربية المتحدة" },
+      "endereco": {
+        "pt": "Marasi Drive, Business Bay, Dubai, Emirados Árabes Unidos",
+        "en": "Marasi Drive, Business Bay, Dubai, United Arab Emirates",
+        "ar": "شارع مراسي، الخليج التجاري، دبي، الإمارات العربية المتحدة"
+      },
+      "edificio": null,
+      "sala": null,
+      "mapa": "https://www.google.com/maps/search/?api=1&query=Marasi%20Drive%2C%20Business%20Bay%2C%20Dubai%2C%20United%20Arab%20Emirates",
+      "fonte": "Informado pela agência em 24/11/2026"
+    }
+  ],
+  "mercados": {
+    "pt": "Atletas e treinadores em clubes do Brasil, dos países do Golfo (Emirados Árabes Unidos, Arábia Saudita, Catar, Kuwait e Bahrein), do Irã, da Ásia (Tailândia e China) e da Europa (Turquia, Ucrânia e Rússia).",
+    "en": "Players and coaches at clubs in Brazil, the Gulf (United Arab Emirates, Saudi Arabia, Qatar, Kuwait and Bahrain), Iran, Asia (Thailand and China) and Europe (Türkiye, Ukraine and Russia).",
+    "ar": "لاعبون ومدربون في أندية البرازيل ودول الخليج (الإمارات العربية المتحدة والمملكة العربية السعودية وقطر والكويت والبحرين) وإيران وآسيا (تايلاند والصين) وأوروبا (تركيا وأوكرانيا وروسيا)."
+  },
+  "mercadosFonte": { "rotulo": "Transfermarkt — Kiraht Sports, agência licenciada e verificada (31 jogadores e 3 treinadores), consultado em 24/11/2026", "url": "https://www.transfermarkt.com.br/kiraht-sports/beraterfirma/berater/5117" }
+}

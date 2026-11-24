@@ -1,0 +1,22 @@
+{
+  "_nota": "Ajustes confirmados pela agência que prevalecem sobre a planilha e o data.js (os originais não são alterados).",
+  "atletas": {
+    "samir": {
+      "nome": "Samir Caetano",
+      "_origem": "Pedido da agência em 20/11/2026; nome esportivo confirmado no Transfermarkt."
+    },
+    "yago": {
+      "clube": "Al Fayha",
+      "pais": "saudi",
+      "competicao": "Saudi Pro League",
+      "_origem": "Confirmado pela agência em 20/11/2026 (Al Fayha, Arábia Saudita); o Transfermarkt registra empréstimo do América Mineiro desde 06/09/2026."
+    }
+  },
+  "equipe": {
+    "Zé Victor": {
+      "nome": "Zé Vitor",
+      "cargo": "Soccer Agent",
+      "_origem": "Grafia e cargo pedidos pela agência (20/11 e 24/11/2026)."
+    }
+  }
+}

@@ -1,0 +1,244 @@
+---
+import { ui, paths, tr, LANGS, LANG_LABEL, HREFLANG, type Lang } from "../lib/i18n";
+import contato from "../data/contato.json";
+interface Props { title: string; description?: string; lang: Lang; alternates: Record<Lang, string> }
+const { title, description, lang, alternates } = Astro.props;
+const t = ui[lang];
+const home = paths.home(lang);
+const escritorios = contato.escritorios;
+const ano = new Date().getFullYear();
+---
+<!doctype html>
+<html lang={t.htmlLang} dir={t.dir}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description ?? t.metaDescription} />
+  <meta name="theme-color" content="#0B1466" />
+  <meta name="robots" content="noindex" />
+  {LANGS.map((l) => <link rel="alternate" hreflang={HREFLANG[l]} href={alternates[l]} />)}
+  <link rel="alternate" hreflang="x-default" href={alternates.pt} />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preload" href="/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script is:inline define:vars={{ lang, alternates }}>
+    // Lembra o idioma escolhido: se o visitante preferiu outro idioma, abre a página equivalente.
+    try {
+      var pref = localStorage.getItem("kiraht-lang");
+      if ((pref === "pt" || pref === "en" || pref === "ar") && pref !== lang && alternates[pref]) location.replace(alternates[pref] + location.hash);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">{t.skip}</a>
+  <header class="topo">
+    <div class="wrap topo-in">
+      <a href={home} class="marca" aria-label={t.homeLabel}><img src="/kiraht-logo.png" alt="Kiraht Sports & Support" width="110" height="56" /></a>
+      <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu-principal" data-label-open={t.menu.open} data-label-close={t.menu.close} aria-label={t.menu.open}>
+        <span></span><span></span><span></span>
+      </button>
+      <div class="topo-dir" id="menu-principal">
+        <nav aria-label={t.nav.main}>
+          <a href={`${home}#elenco`}>{t.nav.athletes}</a>
+          <a href={`${home}#equipe`}>{t.nav.team}</a>
+          <a href={`${home}#instagram`}>{t.nav.instagram}</a>
+        </nav>
+        <div class="idioma" role="group" aria-label={t.langSwitch}>
+          {LANGS.map((l, i) => (
+            <>
+              {i > 0 && <span aria-hidden="true">|</span>}
+              <a href={alternates[l]} hreflang={HREFLANG[l]} lang={HREFLANG[l]} dir={l === "ar" ? "rtl" : "ltr"} data-lang={l} aria-current={lang === l ? "true" : undefined}>{LANG_LABEL[l]}</a>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </header>
+  <main id="conteudo"><slot /></main>
+  <footer class="rodape">
+    <div class="wrap rodape-grid">
+      <div class="rodape-marca">
+        <img src="/kiraht-logo.png" alt="Kiraht Sports & Support" width="110" height="56" loading="lazy" />
+        <p>{t.footer.tagline}</p>
+        <a class="rodape-ig" href="https://www.instagram.com/kirahtsports/" target="_blank" rel="noopener">
+          <svg class="ig-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg>
+          <bdi dir="ltr">@kirahtsports</bdi>
+        </a>
+      </div>
+      <div>
+        <h2 class="rodape-titulo">{t.footer.offices}</h2>
+        <ul class="escritorios">
+          {escritorios.map((e) => (
+            <li>
+              <strong>{tr(e.cidade, lang)}{lang === "ar" ? "، " : ", "}{tr(e.pais, lang)}</strong>
+              <address>{tr(e.endereco, lang)}</address>
+              {e.mapa && <a href={e.mapa} target="_blank" rel="noopener">{t.footer.map} ↗</a>}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2 class="rodape-titulo">{t.footer.markets}</h2>
+        <p class="mercados">{tr(contato.mercados, lang)}</p>
+      </div>
+      <nav class="rodape-nav" aria-label={t.footer.navLabel}>
+        <a href={`${home}#elenco`}>{t.nav.athletes}</a>
+        <a href={`${home}#equipe`}>{t.nav.team}</a>
+        <a href={`${home}#instagram`}>{t.nav.instagram}</a>
+      </nav>
+    </div>
+    <div class="wrap rodape-base">
+      <span>© {ano} Kiraht Sports &amp; Support</span>
+      <span class="aviso">{t.footerNote}</span>
+    </div>
+  </footer>
+  <script>
+    import "../scripts/motion";
+  </script>
+  <script is:inline>
+    (function () {
+      var btn = document.querySelector(".menu-btn"), panel = document.getElementById("menu-principal");
+      if (!btn || !panel) return;
+      function set(open) {
+        btn.setAttribute("aria-expanded", String(open));
+        btn.setAttribute("aria-label", open ? btn.dataset.labelClose : btn.dataset.labelOpen);
+        document.body.classList.toggle("menu-aberto", open);
+      }
+      btn.addEventListener("click", function () { set(btn.getAttribute("aria-expanded") !== "true"); });
+      panel.querySelectorAll("nav a").forEach(function (a) { a.addEventListener("click", function () { set(false); }); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+    })();
+    document.querySelectorAll(".idioma a[data-lang]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        try { localStorage.setItem("kiraht-lang", a.dataset.lang); } catch (err) {}
+        if (location.hash) { e.preventDefault(); location.href = a.getAttribute("href") + location.hash; }
+      });
+    });
+  </script>
+</body>
+</html>
+
+<style is:global>
+  @font-face { font-family: "Barlow Condensed"; font-weight: 600; font-display: swap; src: url("/fonts/barlow-condensed-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url("/fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url("/fonts/inter-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-weight: 500; font-display: swap; src: url("/fonts/inter-latin-500-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url("/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+
+  :root {
+    --navy: #0B1466; --navy-deep: #060B3A; --royal: #1A3CA6; --sky: #22A6F2;
+    --ivory: #F7F6F1; --paper: #fff; --ink: #12162B; --muted: #555B72; --line: rgba(11,20,102,.12);
+    --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --arabic: "SF Arabic", "Geeza Pro", "Segoe UI", "Noto Sans Arabic", "Noto Naskh Arabic", Tahoma, "Arial", sans-serif;
+    --wrap: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body { margin: 0; font-family: var(--body); color: var(--ink); background: var(--ivory); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1; margin: 0; text-transform: uppercase; letter-spacing: .01em; }
+  p { margin: 0 0 1em; }
+  .wrap { width: min(var(--wrap), 100% - 32px); margin-inline: auto; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .skip { position: absolute; inset-inline-start: -999px; top: 8px; background: var(--navy); color: #fff; padding: 8px 14px; z-index: 100; }
+  .skip:focus { inset-inline-start: 8px; }
+  :focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; }
+
+  .eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--royal); display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--sky); flex: none; }
+  .secao { padding: clamp(64px, 10vw, 120px) 0; }
+  .secao h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--navy); }
+
+  /* Botões com relevo discreto e resposta suave ao clique */
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 999px; border: 0; cursor: pointer; font: inherit; font-weight: 600; font-size: .95rem; text-decoration: none; transition: background .2s, color .2s, transform .15s ease, box-shadow .2s ease; will-change: transform; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(1px) scale(.98); transition-duration: .08s; }
+  .btn-claro { background: linear-gradient(180deg, #fff, #EEF1F8); color: var(--navy); box-shadow: inset 0 1px 0 #fff, inset 0 -2px 0 rgba(11,20,102,.08), 0 10px 24px -10px rgba(0,0,0,.45); }
+  .btn-claro:hover { background: linear-gradient(180deg, #fff, #E4F3FD); box-shadow: inset 0 1px 0 #fff, inset 0 -2px 0 rgba(11,20,102,.08), 0 14px 30px -12px rgba(34,166,242,.6); }
+  .btn-claro:active { box-shadow: inset 0 2px 4px rgba(11,20,102,.12), 0 4px 10px -6px rgba(0,0,0,.4); }
+  .btn-escuro { background: linear-gradient(180deg, #1A2A8C, var(--navy)); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -2px 0 rgba(0,0,0,.25), 0 12px 26px -12px rgba(11,20,102,.7); }
+  .btn-escuro:hover { background: linear-gradient(180deg, #2447B8, var(--royal)); }
+  .btn-escuro:active { box-shadow: inset 0 2px 5px rgba(0,0,0,.3), 0 4px 10px -6px rgba(11,20,102,.6); }
+  .btn-linha { background: linear-gradient(180deg, #fff, var(--ivory)); color: var(--navy); box-shadow: inset 0 0 0 1.5px rgba(11,20,102,.25), inset 0 -2px 0 rgba(11,20,102,.06), 0 6px 14px -8px rgba(11,20,102,.35); }
+  .btn-linha:hover { box-shadow: inset 0 0 0 1.5px var(--sky), 0 8px 18px -10px rgba(34,166,242,.6); }
+  .btn-linha:active { box-shadow: inset 0 0 0 1.5px var(--royal), inset 0 2px 4px rgba(11,20,102,.12); }
+
+  /* Inclinação 3D suave nos cards (variáveis controladas por scripts/motion.ts) */
+  [data-tilt] { position: relative; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0); transform-style: preserve-3d; transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .25s; }
+  [data-tilt].inclinado { transition: transform .12s linear, box-shadow .35s ease, border-color .25s; box-shadow: 0 22px 40px -18px rgba(11,20,102,.35); border-color: var(--sky); }
+  [data-tilt]::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.28), rgba(255,255,255,0) 55%); }
+  [data-tilt].inclinado::after { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .btn, .btn:hover, .btn:active { transform: none; }
+    [data-tilt] { transform: none !important; }
+  }
+
+  .topo { position: sticky; top: 0; z-index: 50; background: rgba(247,246,241,.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .topo-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 68px; }
+  .marca img { height: 44px; width: auto; }
+  .topo-dir { display: flex; align-items: center; gap: 24px; }
+  .topo nav { display: flex; gap: 22px; }
+  .topo nav a { text-decoration: none; font-size: .88rem; font-weight: 500; color: var(--navy); }
+  .topo nav a:hover { color: var(--royal); }
+  .idioma { display: flex; align-items: center; gap: 6px; font-size: .8rem; font-weight: 600; letter-spacing: .06em; color: rgba(11,20,102,.35); padding-inline-start: 20px; border-inline-start: 1px solid var(--line); }
+  .idioma a { text-decoration: none; color: rgba(11,20,102,.55); padding: 6px 2px; min-width: 24px; text-align: center; }
+  .idioma a[lang="ar"] { font-family: var(--arabic); letter-spacing: 0; font-size: .92rem; }
+  .idioma a:hover { color: var(--navy); }
+  .idioma a[aria-current="true"] { color: var(--navy); box-shadow: inset 0 -2px 0 var(--sky); }
+
+  /* Menu do celular */
+  .menu-btn { display: none; width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; position: relative; border-radius: 10px; }
+  .menu-btn span { position: absolute; left: 11px; right: 11px; height: 2px; border-radius: 2px; background: var(--navy); transition: transform .25s, opacity .2s, top .25s; }
+  .menu-btn span:nth-child(1) { top: 15px; } .menu-btn span:nth-child(2) { top: 21px; } .menu-btn span:nth-child(3) { top: 27px; }
+  .menu-aberto .menu-btn span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+  .menu-aberto .menu-btn span:nth-child(2) { opacity: 0; }
+  .menu-aberto .menu-btn span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+  @media (max-width: 760px) {
+    .marca img { height: 38px; }
+    .menu-btn { display: block; }
+    .topo-dir { position: absolute; inset-inline: 0; top: 100%; display: none; flex-direction: column; align-items: stretch; gap: 0; background: rgba(247,246,241,.98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); box-shadow: 0 18px 30px -18px rgba(11,20,102,.35); padding: 8px 16px 18px; }
+    .menu-aberto .topo-dir { display: flex; }
+    .topo nav { flex-direction: column; gap: 0; }
+    .topo nav a { font-size: 1.05rem; padding: 14px 4px; border-bottom: 1px solid var(--line); }
+    .idioma { padding: 16px 4px 0; border: 0; gap: 10px; font-size: .95rem; }
+    .idioma a { padding: 8px 6px; }
+  }
+
+  /* Árabe: fonte do sistema com suporte ao árabe, sem espaçamento entre letras (que separaria as letras ligadas) */
+  html[lang="ar"] { --display: var(--arabic); --body: var(--arabic); }
+  html[lang="ar"] body { line-height: 1.75; }
+  html[lang="ar"] *, html[lang="ar"] *::before { letter-spacing: 0 !important; }
+  html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { line-height: 1.3; font-weight: 700; }
+  html[lang="ar"] .eyebrow, html[lang="ar"] dt, html[lang="ar"] .rodape-titulo { text-transform: none; }
+  bdi[dir="ltr"], .ltr { unicode-bidi: isolate; direction: ltr; }
+
+  .rodape { background: var(--navy-deep); color: rgba(255,255,255,.75); font-size: .88rem; padding: clamp(48px, 7vw, 80px) 0 0; }
+  .rodape-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.4fr auto; gap: 32px 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .rodape-marca img { height: 48px; width: auto; background: var(--ivory); border-radius: 10px; padding: 4px 8px; }
+  .rodape-marca p { margin: 16px 0 12px; max-width: 30ch; line-height: 1.5; }
+  .rodape-ig { display: inline-flex; gap: 8px; align-items: center; color: var(--sky); text-decoration: none; font-weight: 500; }
+  .rodape-ig:hover { color: #fff; }
+  .rodape-titulo { font-family: var(--body); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--sky); font-weight: 600; margin: 0 0 14px; }
+  .escritorios { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .escritorios li { display: flex; flex-direction: column; gap: 2px; }
+  .escritorios strong { color: #fff; font-weight: 500; }
+  .escritorios address { font-style: normal; line-height: 1.5; }
+  .escritorios a { color: var(--sky); }
+  .mercados { margin: 0; line-height: 1.6; max-width: 46ch; }
+  .rodape-nav { display: flex; flex-direction: column; gap: 10px; }
+  .rodape-nav a { color: rgba(255,255,255,.85); text-decoration: none; }
+  .rodape-nav a:hover { color: var(--sky); }
+  .rodape-base { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; padding: 20px 0 28px; font-size: .8rem; }
+  @media (max-width: 900px) { .rodape-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .rodape-grid { grid-template-columns: 1fr; } .rodape-nav { flex-direction: row; flex-wrap: wrap; gap: 16px; } }
+  .aviso { color: var(--sky); }
+
+  .avatar { display: grid; place-items: center; background: linear-gradient(150deg, var(--navy), var(--royal)); color: #fff; font-family: var(--display); font-weight: 700; letter-spacing: .04em; }
+  .foto-reservada { position: relative; }
+  .foto-reservada small { position: absolute; inset-inline-start: 12px; bottom: 10px; font-family: var(--body); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.75); font-weight: 500; }
+  .ig-ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; flex: none; }
+  .ig-ico .dot { fill: currentColor; stroke: none; }
+</style>

@@ -1,0 +1,9 @@
+---
+import AthletePage from "../../components/AthletePage.astro";
+import { athletes } from "../../lib/kiraht";
+export function getStaticPaths() {
+  return athletes.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+const { a } = Astro.props;
+---
+<AthletePage a={a} lang="pt" />

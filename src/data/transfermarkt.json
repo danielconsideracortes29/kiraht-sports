@@ -1,0 +1,1412 @@
+{
+  "_nota": "Dados conferidos no Transfermarkt (transfermarkt.com.br) em 20/11/2026. Identidade confirmada por nome, clube atual e agência (Kiraht Sports) no perfil. Trajetória: carreira profissional (sem categorias de base), em ordem cronológica; 'emprestimo' marca empréstimos. Os textos do site são próprios.",
+  "jogadores": {
+    "everaldo": {
+      "tm": "https://www.transfermarkt.com.br/everaldo/profil/spieler/205041",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Everaldo",
+      "nomeCompleto": "Everaldo Stum",
+      "posicao": "Centroavante",
+      "posicoesSecundarias": [
+        "Seg. Atacante"
+      ],
+      "nascimento": "05/07/1991",
+      "localNascimento": "Garibaldi",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,82 m",
+      "pe": "direito",
+      "clubeAtual": "EC Bahia",
+      "emprestadoDe": "Fluminense FC",
+      "carreira": [
+        {
+          "clube": "Grêmio",
+          "de": 2011,
+          "ate": 2012
+        },
+        {
+          "clube": "Caxias",
+          "de": 2012,
+          "ate": 2012,
+          "emprestimo": true
+        },
+        {
+          "clube": "CSA",
+          "de": 2013,
+          "ate": 2014,
+          "emprestimo": true
+        },
+        {
+          "clube": "Figueirense",
+          "de": 2014,
+          "ate": 2014,
+          "emprestimo": true
+        },
+        {
+          "clube": "Grêmio",
+          "de": 2014,
+          "ate": 2015
+        },
+        {
+          "clube": "Figueirense",
+          "de": 2015,
+          "ate": 2015
+        },
+        {
+          "clube": "Paysandu",
+          "de": 2015,
+          "ate": 2016
+        },
+        {
+          "clube": "Água Santa",
+          "de": 2016,
+          "ate": 2016
+        },
+        {
+          "clube": "Santa Cruz",
+          "de": 2016,
+          "ate": 2016
+        },
+        {
+          "clube": "Al-Faisaly",
+          "de": 2016,
+          "ate": 2017
+        },
+        {
+          "clube": "Novorizontino",
+          "de": 2017,
+          "ate": 2017
+        },
+        {
+          "clube": "Atlético-GO",
+          "de": 2017,
+          "ate": 2017
+        },
+        {
+          "clube": "Querétaro FC",
+          "de": 2017,
+          "ate": 2019
+        },
+        {
+          "clube": "Chapecoense",
+          "de": 2019,
+          "ate": 2019,
+          "emprestimo": true
+        },
+        {
+          "clube": "Kashima Antlers",
+          "de": 2020,
+          "ate": 2023
+        },
+        {
+          "clube": "Bahia",
+          "de": 2023,
+          "ate": 2025
+        },
+        {
+          "clube": "Fluminense",
+          "de": 2025,
+          "ate": 2026
+        },
+        {
+          "clube": "Bahia",
+          "de": 2026,
+          "ate": null,
+          "emprestimo": true
+        }
+      ]
+    },
+    "yago": {
+      "tm": "https://www.transfermarkt.com.br/yago-souza/profil/spieler/1085188",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Yago Souza",
+      "nomeCompleto": "Yago Souza de Santana",
+      "posicao": "Meia Ofensivo",
+      "posicoesSecundarias": [],
+      "nascimento": "11/02/2006",
+      "localNascimento": "Rio de Janeiro",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,73 m",
+      "pe": "direito",
+      "clubeAtual": "Al-Fayha FC",
+      "emprestadoDe": "América Mineiro",
+      "carreira": [
+        {
+          "clube": "América-MG",
+          "de": 2025,
+          "ate": 2026
+        },
+        {
+          "clube": "Al-Fayha",
+          "de": 2026,
+          "ate": null,
+          "emprestimo": true
+        }
+      ]
+    },
+    "emerson": {
+      "tm": "https://www.transfermarkt.com.br/emerson/profil/spieler/382171",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Emerson",
+      "nomeCompleto": "Emerson Raymundo Santos",
+      "posicao": "Zagueiro",
+      "posicoesSecundarias": [
+        "Lateral Dir.",
+        "Volante"
+      ],
+      "nascimento": "05/04/1995",
+      "localNascimento": "Itaboraí",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,83 m",
+      "pe": "direito",
+      "clubeAtual": "América Mineiro",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Botafogo",
+          "de": 2015,
+          "ate": 2018
+        },
+        {
+          "clube": "Palmeiras",
+          "de": 2018,
+          "ate": 2018
+        },
+        {
+          "clube": "Internacional",
+          "de": 2018,
+          "ate": 2019,
+          "emprestimo": true
+        },
+        {
+          "clube": "Palmeiras",
+          "de": 2019,
+          "ate": 2021
+        },
+        {
+          "clube": "Kashiwa Reysol",
+          "de": 2021,
+          "ate": 2022
+        },
+        {
+          "clube": "Atlético-GO",
+          "de": 2022,
+          "ate": 2023,
+          "emprestimo": true
+        },
+        {
+          "clube": "Inter de Limeira",
+          "de": 2024,
+          "ate": 2024
+        },
+        {
+          "clube": "Ponte Preta",
+          "de": 2024,
+          "ate": 2025
+        },
+        {
+          "clube": "América-MG",
+          "de": 2025,
+          "ate": null
+        }
+      ]
+    },
+    "gassama": {
+      "tm": "https://www.transfermarkt.com.br/sekou-gassama/profil/spieler/1058758",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Sékou Gassama",
+      "nomeCompleto": "Sékoubaba Gassama",
+      "posicao": "Ponta-Direita",
+      "posicoesSecundarias": [
+        "Ponta-Esquerda",
+        "Meia Ofensivo"
+      ],
+      "nascimento": "04/01/2001",
+      "localNascimento": null,
+      "nacionalidades": [
+        "Mali",
+        "Emirados Árabes Unidos"
+      ],
+      "altura": "1,81 m",
+      "pe": "esquerdo",
+      "clubeAtual": "Ajman Club",
+      "emprestadoDe": "Al-Ain FC",
+      "carreira": [
+        {
+          "clube": "Al-Bataeh",
+          "de": 2022,
+          "ate": 2024
+        },
+        {
+          "clube": "Al-Ain",
+          "de": 2024,
+          "ate": 2025
+        },
+        {
+          "clube": "Kalba FC",
+          "de": 2025,
+          "ate": 2026,
+          "emprestimo": true
+        },
+        {
+          "clube": "Ajman Club",
+          "de": 2026,
+          "ate": null,
+          "emprestimo": true
+        }
+      ]
+    },
+    "lucas-pimenta": {
+      "tm": "https://www.transfermarkt.com.br/lucas-pimenta/profil/spieler/681120",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Lucas Pimenta",
+      "nomeCompleto": "Lucas Pimenta Peres Lopes",
+      "posicao": "Zagueiro",
+      "posicoesSecundarias": [
+        "Lateral Dir."
+      ],
+      "nascimento": "17/07/2000",
+      "localNascimento": "Niterói",
+      "nacionalidades": [
+        "Emirados Árabes Unidos",
+        "Brasil"
+      ],
+      "altura": "1,88 m",
+      "pe": "direito",
+      "clubeAtual": "Al-Wahda FC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Al-Wahda",
+          "de": 2020,
+          "ate": null
+        }
+      ]
+    },
+    "felipe-motta": {
+      "tm": "https://www.transfermarkt.com.br/felipe-motta/profil/spieler/1083638",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Felipe Motta",
+      "nomeCompleto": "Felipe de Souza Motta Marins",
+      "posicao": "Zagueiro",
+      "posicoesSecundarias": [
+        "Lateral Esq."
+      ],
+      "nascimento": "03/08/2003",
+      "localNascimento": "Rio de Janeiro",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,87 m",
+      "pe": "esquerdo",
+      "clubeAtual": "Al-Nasr SC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Emirates Club",
+          "de": 2024,
+          "ate": 2024
+        },
+        {
+          "clube": "Al-Nasr",
+          "de": 2024,
+          "ate": null
+        }
+      ]
+    },
+    "samir": {
+      "tm": "https://www.transfermarkt.com.br/samir-caetano/profil/spieler/255744",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Samir Caetano",
+      "nomeCompleto": "Samir Caetano de Souza Santos",
+      "posicao": "Zagueiro",
+      "posicoesSecundarias": [
+        "Lateral Esq."
+      ],
+      "nascimento": "05/12/1994",
+      "localNascimento": "São Gonçalo",
+      "nacionalidades": [
+        "Brasil",
+        "Itália"
+      ],
+      "altura": "1,84 m",
+      "pe": "esquerdo",
+      "clubeAtual": "Al-Dhafra FC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Flamengo",
+          "de": 2015,
+          "ate": 2016
+        },
+        {
+          "clube": "Udinese",
+          "de": 2016,
+          "ate": 2016
+        },
+        {
+          "clube": "Hellas Verona",
+          "de": 2016,
+          "ate": 2016,
+          "emprestimo": true
+        },
+        {
+          "clube": "Udinese",
+          "de": 2016,
+          "ate": 2022
+        },
+        {
+          "clube": "Watford",
+          "de": 2022,
+          "ate": 2022
+        },
+        {
+          "clube": "Tigres UANL",
+          "de": 2022,
+          "ate": 2025
+        },
+        {
+          "clube": "Mazatlán FC",
+          "de": 2025,
+          "ate": 2025,
+          "emprestimo": true
+        },
+        {
+          "clube": "Al-Najma",
+          "de": 2025,
+          "ate": 2026
+        },
+        {
+          "clube": "Al-Dhafra FC",
+          "de": 2026,
+          "ate": null
+        }
+      ]
+    },
+    "kaua-bastian": {
+      "tm": "https://www.transfermarkt.com.br/kaua-bastian/profil/spieler/1083678",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Kaua Bastian",
+      "nomeCompleto": "Kaua Bastian Santana",
+      "posicao": "Zagueiro",
+      "posicoesSecundarias": [],
+      "nascimento": "19/07/2004",
+      "localNascimento": "Cláudia",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,86 m",
+      "pe": null,
+      "clubeAtual": "Hatta Club",
+      "emprestadoDe": "Al-Ain FC",
+      "carreira": [
+        {
+          "clube": "Al-Ain (equipe reserva)",
+          "clubeEn": "Al-Ain (reserve team)",
+          "de": 2024,
+          "ate": 2026
+        },
+        {
+          "clube": "Hatta Club",
+          "de": 2026,
+          "ate": null,
+          "emprestimo": true
+        }
+      ]
+    },
+    "carlos-andre": {
+      "tm": "https://www.transfermarkt.com.br/carlos-andre/profil/spieler/1261645",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Carlos André",
+      "nomeCompleto": "Carlos André Silva de Lima",
+      "posicao": "Ponta-Direita",
+      "posicoesSecundarias": [
+        "Meia Ofensivo"
+      ],
+      "nascimento": "04/01/2006",
+      "localNascimento": null,
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": null,
+      "pe": "esquerdo",
+      "clubeAtual": "Sharjah FC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Sharjah FC",
+          "de": 2025,
+          "ate": null
+        }
+      ]
+    },
+    "rangel": {
+      "tm": "https://www.transfermarkt.com.br/rangel/profil/spieler/980767",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Rangel",
+      "nomeCompleto": "Vinicius Rangel da Silva",
+      "posicao": "Lateral Esq.",
+      "posicoesSecundarias": [],
+      "nascimento": "30/04/2004",
+      "localNascimento": "Rebouças",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,77 m",
+      "pe": "esquerdo",
+      "clubeAtual": "Al-Fujairah SC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Louletano",
+          "de": 2023,
+          "ate": 2024,
+          "emprestimo": true
+        },
+        {
+          "clube": "Al-Fayha",
+          "de": 2024,
+          "ate": 2025
+        },
+        {
+          "clube": "Al-Dhafra FC",
+          "de": 2025,
+          "ate": 2026
+        },
+        {
+          "clube": "Al-Fujairah SC",
+          "de": 2026,
+          "ate": null
+        }
+      ]
+    },
+    "lazaro": {
+      "tm": "https://www.transfermarkt.com.br/lazaro/profil/spieler/574772",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Lázaro",
+      "nomeCompleto": "Lázaro Vinicius Marques",
+      "posicao": "Centroavante",
+      "posicoesSecundarias": [
+        "Ponta-Esquerda",
+        "Ponta-Direita"
+      ],
+      "nascimento": "12/03/2002",
+      "localNascimento": "Belo Horizonte",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,81 m",
+      "pe": "direito",
+      "clubeAtual": "Al-Fayha FC",
+      "emprestadoDe": "Al-Najma SC",
+      "carreira": [
+        {
+          "clube": "Flamengo",
+          "de": 2020,
+          "ate": 2022
+        },
+        {
+          "clube": "UD Almería",
+          "de": 2022,
+          "ate": 2024
+        },
+        {
+          "clube": "Palmeiras",
+          "de": 2024,
+          "ate": 2024,
+          "emprestimo": true
+        },
+        {
+          "clube": "UD Almería",
+          "de": 2024,
+          "ate": 2025
+        },
+        {
+          "clube": "Al-Najma",
+          "de": 2025,
+          "ate": 2026
+        },
+        {
+          "clube": "Al-Fayha",
+          "de": 2026,
+          "ate": null,
+          "emprestimo": true
+        }
+      ]
+    },
+    "sorriso": {
+      "tm": "https://www.transfermarkt.com.br/sorriso/profil/spieler/1223916",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Sorriso",
+      "nomeCompleto": "João Victor Oliveira dos Santos",
+      "posicao": "Ponta-Esquerda",
+      "posicoesSecundarias": [
+        "Ponta-Direita"
+      ],
+      "nascimento": "23/02/2005",
+      "localNascimento": "Niterói",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,65 m",
+      "pe": "direito",
+      "clubeAtual": "Al-Fateh SC",
+      "emprestadoDe": "SE Palmeiras",
+      "carreira": [
+        {
+          "clube": "Palmeiras",
+          "de": 2026,
+          "ate": 2026
+        },
+        {
+          "clube": "Avaí",
+          "de": 2026,
+          "ate": 2026,
+          "emprestimo": true
+        },
+        {
+          "clube": "Al-Fateh",
+          "de": 2026,
+          "ate": null,
+          "emprestimo": true
+        }
+      ]
+    },
+    "joao-pedro": {
+      "tm": "https://www.transfermarkt.com.br/joao-pedro/profil/spieler/293471",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "João Pedro",
+      "nomeCompleto": "João Pedro Pereira dos Santos",
+      "posicao": "Centroavante",
+      "posicoesSecundarias": [],
+      "nascimento": "22/04/1993",
+      "localNascimento": "Fortaleza",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,82 m",
+      "pe": "direito",
+      "clubeAtual": "Qatar SC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Santa Clara",
+          "de": 2013,
+          "ate": 2014
+        },
+        {
+          "clube": "Trofense",
+          "de": 2014,
+          "ate": 2015
+        },
+        {
+          "clube": "Fortaleza",
+          "de": 2015,
+          "ate": 2016
+        },
+        {
+          "clube": "Rayo Majadahonda",
+          "de": 2016,
+          "ate": 2016
+        },
+        {
+          "clube": "Alcobendas Sport",
+          "de": 2016,
+          "ate": 2017
+        },
+        {
+          "clube": "Al-Fateh",
+          "de": 2017,
+          "ate": 2019
+        },
+        {
+          "clube": "Al-Dhafra FC",
+          "de": 2019,
+          "ate": 2020
+        },
+        {
+          "clube": "Baniyas",
+          "de": 2020,
+          "ate": 2021,
+          "emprestimo": true
+        },
+        {
+          "clube": "Al-Wahda",
+          "de": 2021,
+          "ate": 2023
+        },
+        {
+          "clube": "Al-Taawoun",
+          "de": 2023,
+          "ate": 2025
+        },
+        {
+          "clube": "Al-Wasl",
+          "de": 2025,
+          "ate": 2025
+        },
+        {
+          "clube": "Qatar SC",
+          "de": 2025,
+          "ate": null
+        }
+      ]
+    },
+    "kaka-mendes": {
+      "tm": "https://www.transfermarkt.com.br/kaka-mendes/profil/spieler/194145",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Kaká Mendes",
+      "nomeCompleto": "Francisco Claílson Mendes da Silva",
+      "posicao": "Ponta-Esquerda",
+      "posicoesSecundarias": [
+        "Meia Ofensivo",
+        "Ponta-Direita"
+      ],
+      "nascimento": "16/03/1993",
+      "localNascimento": "Fortaleza",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,67 m",
+      "pe": "esquerdo",
+      "clubeAtual": "Port FC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "América-RN",
+          "de": 2013,
+          "ate": 2014
+        },
+        {
+          "clube": "Cabofriense",
+          "de": 2014,
+          "ate": 2015
+        },
+        {
+          "clube": "Boavista-RJ",
+          "de": 2015,
+          "ate": 2017
+        },
+        {
+          "clube": "Sampaio Corrêa-RJ",
+          "de": 2017,
+          "ate": 2017
+        },
+        {
+          "clube": "Cabofriense",
+          "de": 2017,
+          "ate": 2018
+        },
+        {
+          "clube": "Sampaio Corrêa-RJ",
+          "de": 2018,
+          "ate": 2018,
+          "emprestimo": true
+        },
+        {
+          "clube": "Cabofriense",
+          "de": 2018,
+          "ate": 2019
+        },
+        {
+          "clube": "Sampaio Corrêa-RJ",
+          "de": 2019,
+          "ate": 2019,
+          "emprestimo": true
+        },
+        {
+          "clube": "Cabofriense",
+          "de": 2019,
+          "ate": 2020
+        },
+        {
+          "clube": "Al-Okhdood",
+          "de": 2020,
+          "ate": 2023
+        },
+        {
+          "clube": "Al-Safa",
+          "de": 2023,
+          "ate": 2024
+        },
+        {
+          "clube": "Al-Jabalain",
+          "de": 2024,
+          "ate": 2025
+        },
+        {
+          "clube": "Port FC",
+          "de": 2025,
+          "ate": null
+        }
+      ]
+    },
+    "jefferson": {
+      "tm": "https://www.transfermarkt.com.br/jefferson/profil/spieler/537068",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Jefferson",
+      "nomeCompleto": "Jefferson Mateus de Assis Estácio",
+      "posicao": "Centroavante",
+      "posicoesSecundarias": [
+        "Ponta-Direita"
+      ],
+      "nascimento": "21/10/1994",
+      "localNascimento": "Porto Alegre",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,85 m",
+      "pe": "direito",
+      "clubeAtual": "Sukhothai FC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Barbarense",
+          "de": 2015,
+          "ate": 2015
+        },
+        {
+          "clube": "Coritiba",
+          "de": 2015,
+          "ate": 2016
+        },
+        {
+          "clube": "Andraus",
+          "de": 2016,
+          "ate": 2016,
+          "emprestimo": true
+        },
+        {
+          "clube": "Coritiba",
+          "de": 2016,
+          "ate": 2017
+        },
+        {
+          "clube": "Novo Hamburgo",
+          "de": 2017,
+          "ate": 2017
+        },
+        {
+          "clube": "Sliema Wanderers",
+          "de": 2017,
+          "ate": 2019
+        },
+        {
+          "clube": "FC Nadur",
+          "de": 2019,
+          "ate": 2019,
+          "emprestimo": true
+        },
+        {
+          "clube": "Gżira United",
+          "de": 2019,
+          "ate": 2020
+        },
+        {
+          "clube": "Fujairah SC",
+          "de": 2020,
+          "ate": 2020,
+          "emprestimo": true
+        },
+        {
+          "clube": "Gżira United",
+          "de": 2020,
+          "ate": 2023
+        },
+        {
+          "clube": "Bali United",
+          "de": 2023,
+          "ate": 2024
+        },
+        {
+          "clube": "Lamphun Warriors",
+          "de": 2024,
+          "ate": 2025
+        },
+        {
+          "clube": "Valletta",
+          "de": 2025,
+          "ate": 2025
+        },
+        {
+          "clube": "Al-Jahra",
+          "de": 2026,
+          "ate": 2026
+        },
+        {
+          "clube": "Sukhothai FC",
+          "de": 2026,
+          "ate": null
+        }
+      ]
+    },
+    "edson": {
+      "tm": "https://www.transfermarkt.com.br/edson-mardden/profil/spieler/348260",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Edson Mardden",
+      "nomeCompleto": "Edson Mardden Alves Pereira",
+      "posicao": "Goleiro",
+      "posicoesSecundarias": [],
+      "nascimento": "12/12/1991",
+      "localNascimento": "Combinado",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,90 m",
+      "pe": "direito",
+      "clubeAtual": "Chadormalu SC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Vila Nova",
+          "de": 2013,
+          "ate": 2014
+        },
+        {
+          "clube": "Arapongas",
+          "de": 2014,
+          "ate": 2014
+        },
+        {
+          "clube": "Icasa",
+          "de": 2014,
+          "ate": 2014
+        },
+        {
+          "clube": "Criciúma",
+          "de": 2014,
+          "ate": 2016
+        },
+        {
+          "clube": "Mirassol",
+          "de": 2016,
+          "ate": 2016,
+          "emprestimo": true
+        },
+        {
+          "clube": "Criciúma",
+          "de": 2016,
+          "ate": 2017
+        },
+        {
+          "clube": "CRB",
+          "de": 2017,
+          "ate": 2021
+        },
+        {
+          "clube": "Mirassol",
+          "de": 2021,
+          "ate": 2022
+        },
+        {
+          "clube": "Pouso Alegre",
+          "de": 2022,
+          "ate": 2022
+        },
+        {
+          "clube": "São Bento",
+          "de": 2022,
+          "ate": 2023
+        },
+        {
+          "clube": "Amazonas",
+          "de": 2023,
+          "ate": 2024
+        },
+        {
+          "clube": "Chadormalu SC",
+          "de": 2024,
+          "ate": null
+        }
+      ]
+    },
+    "evans": {
+      "tm": "https://www.transfermarkt.com.br/evans-ampofo/profil/spieler/830937",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Evans Ampofo",
+      "nomeCompleto": null,
+      "posicao": "Meia Central",
+      "posicoesSecundarias": [
+        "Volante"
+      ],
+      "nascimento": "06/01/2003",
+      "localNascimento": null,
+      "nacionalidades": [
+        "Gana"
+      ],
+      "altura": "1,72 m",
+      "pe": "direito",
+      "clubeAtual": "Al-Jahra SC",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Al-Nasr",
+          "de": 2023,
+          "ate": 2025
+        },
+        {
+          "clube": "Dibba",
+          "de": 2025,
+          "ate": 2026
+        },
+        {
+          "clube": "Al-Jahra",
+          "de": 2026,
+          "ate": null
+        }
+      ]
+    },
+    "fabricio-yan": {
+      "tm": "https://www.transfermarkt.com.br/fabricio-yan/profil/spieler/1082597",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Fabrício Yan",
+      "nomeCompleto": "Fabrício Yan Peixoto Barros Limeira",
+      "posicao": "Meia Ofensivo",
+      "posicoesSecundarias": [
+        "Centroavante",
+        "Ponta-Esquerda"
+      ],
+      "nascimento": "10/02/2004",
+      "localNascimento": "Maceió",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,85 m",
+      "pe": "direito",
+      "clubeAtual": "NK Veres Rivne",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Al-Jazira",
+          "de": 2023,
+          "ate": 2024
+        },
+        {
+          "clube": "Khor Fakkan",
+          "de": 2024,
+          "ate": 2025
+        },
+        {
+          "clube": "Veres Rivne",
+          "de": 2026,
+          "ate": null
+        }
+      ]
+    },
+    "samuel": {
+      "tm": "https://www.transfermarkt.com.br/samuel-toscas/profil/spieler/753319",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "Samuel Toscas",
+      "nomeCompleto": "Samuel Conceição Toscas",
+      "posicao": "Lateral Esq.",
+      "posicoesSecundarias": [
+        "Meia Esquerda"
+      ],
+      "nascimento": "14/08/1999",
+      "localNascimento": "Niterói",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,82 m",
+      "pe": "esquerdo",
+      "clubeAtual": "Riffa Club",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Patrocinense",
+          "de": 2021,
+          "ate": 2021
+        },
+        {
+          "clube": "Uberaba",
+          "de": 2021,
+          "ate": 2022
+        },
+        {
+          "clube": "Patrocinense",
+          "de": 2022,
+          "ate": 2022
+        },
+        {
+          "clube": "Uberaba",
+          "de": 2022,
+          "ate": 2022
+        },
+        {
+          "clube": "Olímpia de Hospital",
+          "clubeEn": "Olímpia de Hospital",
+          "de": 2022,
+          "ate": 2024
+        },
+        {
+          "clube": "Cianorte",
+          "de": 2024,
+          "ate": 2024
+        },
+        {
+          "clube": "Figueirense",
+          "de": 2024,
+          "ate": 2024,
+          "emprestimo": true
+        },
+        {
+          "clube": "Figueirense",
+          "de": 2025,
+          "ate": 2025
+        },
+        {
+          "clube": "Riffa Club",
+          "de": 2025,
+          "ate": null
+        }
+      ]
+    },
+    "david-kaiki": {
+      "tm": "https://www.transfermarkt.com.br/david-kaiki/profil/spieler/983500",
+      "consultado": "2026-11-20",
+      "nomeEsportivo": "David Kaiki",
+      "nomeCompleto": "David Kaiki Flores da Silva",
+      "posicao": "Ponta-Direita",
+      "posicoesSecundarias": [
+        "Ponta-Esquerda",
+        "Meia Ofensivo"
+      ],
+      "nascimento": "26/06/2004",
+      "localNascimento": "São José dos Campos",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "altura": "1,76 m",
+      "pe": "direito",
+      "clubeAtual": "Batman Petrolspor",
+      "emprestadoDe": null,
+      "carreira": [
+        {
+          "clube": "Água Santa",
+          "de": 2023,
+          "ate": 2023
+        },
+        {
+          "clube": "Strasbourg B",
+          "de": 2023,
+          "ate": 2024
+        },
+        {
+          "clube": "Torreense (sub-23)",
+          "clubeEn": "Torreense (U23)",
+          "de": 2024,
+          "ate": 2025,
+          "emprestimo": true
+        },
+        {
+          "clube": "Damac FC",
+          "de": 2025,
+          "ate": 2026
+        },
+        {
+          "clube": "Batman Petrolspor",
+          "de": 2026,
+          "ate": null
+        }
+      ]
+    }
+  },
+  "treinadores": {
+    "umberto-louzer": {
+      "tm": "https://www.transfermarkt.com.br/umberto-louzer/profil/trainer/57012",
+      "consultado": "2026-11-20",
+      "nomeCompleto": "Umberto Lourenço Louzer Filho",
+      "nascimento": "24/02/1980",
+      "localNascimento": "Vila Velha",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "licenca": {
+        "pt": "Licença A CONMEBOL",
+        "en": "CONMEBOL A Licence"
+      },
+      "clubeAtual": "Criciúma",
+      "carreira": [
+        {
+          "clube": "Guarani",
+          "funcao": "auxiliar",
+          "de": 2017,
+          "ate": 2018
+        },
+        {
+          "clube": "Guarani",
+          "de": 2018,
+          "ate": 2018
+        },
+        {
+          "clube": "Vila Nova",
+          "de": 2018,
+          "ate": 2019
+        },
+        {
+          "clube": "Coritiba",
+          "de": 2019,
+          "ate": 2019
+        },
+        {
+          "clube": "Chapecoense",
+          "de": 2020,
+          "ate": 2021
+        },
+        {
+          "clube": "Sport",
+          "de": 2021,
+          "ate": 2021
+        },
+        {
+          "clube": "Atlético-GO",
+          "de": 2022,
+          "ate": 2022
+        },
+        {
+          "clube": "Juventude",
+          "de": 2022,
+          "ate": 2022
+        },
+        {
+          "clube": "CRB",
+          "de": 2023,
+          "ate": 2023
+        },
+        {
+          "clube": "Guarani",
+          "de": 2023,
+          "ate": 2024
+        },
+        {
+          "clube": "Chapecoense",
+          "de": 2024,
+          "ate": 2024
+        },
+        {
+          "clube": "Atlético-GO",
+          "de": 2024,
+          "ate": 2024
+        },
+        {
+          "clube": "CRB",
+          "de": 2024,
+          "ate": 2025
+        },
+        {
+          "clube": "Novorizontino",
+          "de": 2025,
+          "ate": 2025
+        },
+        {
+          "clube": "Vila Nova",
+          "de": 2025,
+          "ate": 2026
+        },
+        {
+          "clube": "América-MG",
+          "de": 2026,
+          "ate": 2026
+        },
+        {
+          "clube": "Guarani",
+          "de": 2026,
+          "ate": 2026
+        },
+        {
+          "clube": "Criciúma",
+          "de": 2026,
+          "ate": null
+        }
+      ]
+    },
+    "pericles-chamusca": {
+      "tm": "https://www.transfermarkt.com.br/pericles-chamusca/profil/trainer/7580",
+      "consultado": "2026-11-20",
+      "nomeCompleto": "Péricles Raimundo Oliveira Chamusca",
+      "nascimento": "29/09/1965",
+      "localNascimento": "Salvador",
+      "nacionalidades": [
+        "Brasil"
+      ],
+      "licenca": {
+        "pt": "Licença UEFA Pro",
+        "en": "UEFA Pro Licence"
+      },
+      "clubeAtual": "Al-Wahda FC",
+      "carreira": [
+        {
+          "clube": "Vitória",
+          "de": 1995,
+          "ate": 1995
+        },
+        {
+          "clube": "Santa Cruz",
+          "de": 1996,
+          "ate": 1996
+        },
+        {
+          "clube": "Mirassol",
+          "de": 1997,
+          "ate": 1997
+        },
+        {
+          "clube": "Porto-PE",
+          "de": 1998,
+          "ate": 1998
+        },
+        {
+          "clube": "CSA",
+          "de": 1998,
+          "ate": 1998
+        },
+        {
+          "clube": "Vitória",
+          "de": 2001,
+          "ate": 2001
+        },
+        {
+          "clube": "Corinthians-AL",
+          "de": 2001,
+          "ate": 2001
+        },
+        {
+          "clube": "Confiança",
+          "de": 2002,
+          "ate": 2002
+        },
+        {
+          "clube": "Brasiliense",
+          "de": 2002,
+          "ate": 2002
+        },
+        {
+          "clube": "Caxias",
+          "de": 2003,
+          "ate": 2003
+        },
+        {
+          "clube": "Santa Cruz",
+          "de": 2003,
+          "ate": 2004
+        },
+        {
+          "clube": "Santo André",
+          "de": 2004,
+          "ate": 2004
+        },
+        {
+          "clube": "São Caetano",
+          "de": 2004,
+          "ate": 2004
+        },
+        {
+          "clube": "Goiás",
+          "de": 2005,
+          "ate": 2005
+        },
+        {
+          "clube": "Botafogo",
+          "de": 2005,
+          "ate": 2005
+        },
+        {
+          "clube": "Oita Trinita",
+          "de": 2005,
+          "ate": 2009
+        },
+        {
+          "clube": "Sport",
+          "de": 2009,
+          "ate": 2009
+        },
+        {
+          "clube": "Avaí",
+          "de": 2009,
+          "ate": 2010
+        },
+        {
+          "clube": "Al-Arabi",
+          "de": 2010,
+          "ate": 2011
+        },
+        {
+          "clube": "Al-Jaish",
+          "de": 2011,
+          "ate": 2012
+        },
+        {
+          "clube": "Portuguesa",
+          "de": 2012,
+          "ate": 2013
+        },
+        {
+          "clube": "Coritiba",
+          "de": 2013,
+          "ate": 2013
+        },
+        {
+          "clube": "Júbilo Iwata",
+          "de": 2014,
+          "ate": 2014
+        },
+        {
+          "clube": "Al-Gharafa",
+          "de": 2015,
+          "ate": 2015
+        },
+        {
+          "clube": "Al Shaab",
+          "de": 2016,
+          "ate": 2017
+        },
+        {
+          "clube": "Al-Faisaly",
+          "de": 2018,
+          "ate": 2019
+        },
+        {
+          "clube": "Al-Hilal",
+          "de": 2019,
+          "ate": 2019
+        },
+        {
+          "clube": "Al-Faisaly",
+          "de": 2019,
+          "ate": 2021
+        },
+        {
+          "clube": "Al-Shabab",
+          "de": 2021,
+          "ate": 2022
+        },
+        {
+          "clube": "Al-Taawoun",
+          "de": 2022,
+          "ate": 2024
+        },
+        {
+          "clube": "NEOM",
+          "de": 2024,
+          "ate": 2025
+        },
+        {
+          "clube": "Al-Taawoun",
+          "de": 2025,
+          "ate": 2026
+        },
+        {
+          "clube": "Al-Wahda",
+          "de": 2026,
+          "ate": null
+        }
+      ],
+      "inicioClube": "01/07/2026"
+    }
+  }
+}

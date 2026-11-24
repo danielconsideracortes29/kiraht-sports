@@ -1,0 +1,17 @@
+{
+  "name": "kiraht-preview-astro",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.15.0",
+    "gsap": "^3.15.1"
+  },
+  "engines": {
+    "node": ">=20.3.0"
+  }
+}

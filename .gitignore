@@ -1,0 +1,17 @@
+# Dependências e build
+node_modules/
+dist/
+.astro/
+.netlify/
+
+# Node local usado só nesta máquina (Netlify usa o próprio Node)
+.tools/
+
+# Segredos: nunca versionar
+.env
+.env.*
+!.env.example
+
+# Sistema
+.DS_Store
+*.log
